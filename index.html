@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="timer">
+    <h1>TIMER</h1>
+    <div class="line"></div>
+    <div class="div-square">
+      <div class="square">
+        <span>HRS</span>
+        <input class="hr" type="number" value=00>
+      </div>
+      <div class="square">
+        <span>MIN</span>
+        <input class="min" type="number" value=00>
+      </div>
+      <div class="square">
+        <span>SEC</span>
+        <input class="sec" type="number" value=00>
+      </div>
+    </div>
+    <div class="div-btns">
+      <button class="btn start">START</button>
+      <button class="btn pause hidden">PAUSE</button>
+      <button class="btn reset">RESET</button>
+    </div>
+  </div>
+
+  <script>
+    const start = document.querySelector('.start')
+    const reset = document.querySelector('.reset')
+    const pause = document.querySelector('.pause')
+    const hr = document.querySelector('.hr')
+    const min = document.querySelector('.min')
+    const sec = document.querySelector('.sec')
+
+    function timeStart () {
+      start.classList.add('hidden')
+      pause.classList.remove('hidden')
+      start.style.background = '#5180FF'
+      pause.style.background = '#15C2B8'
+      reset.style.background = '#FB7099'
+      setInterval(()=> sec.value-=1, 1000);
+    }
+
+    function timeReset () {
+      location.reload();
+    }
+    
+    function timePause () {
+      pause.classList.add('hidden')
+      start.classList.remove('hidden')
+    }
+
+    start.addEventListener('click', timeStart)
+    reset.addEventListener('click', timeReset)
+    pause.addEventListener('click', timePause)
+  </script>
+</body>
+</html>
